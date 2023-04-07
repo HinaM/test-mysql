@@ -74,6 +74,7 @@ public class Connect {
 		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name,user_password});
 		int size=list.size();
 		return size;
+		
 		/* 
 		if (size > 0) {
 			
