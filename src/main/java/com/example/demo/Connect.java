@@ -71,8 +71,8 @@ public class Connect {
 		
 		///String sql = "select * from user_account where user_name = ? and user_password = ?";
 		String sql = "select * from user_account";
-		///List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql);
-		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name,user_password});
+		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql);
+		///List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name,user_password});
 		/*
 		int size = list.size();
 		
