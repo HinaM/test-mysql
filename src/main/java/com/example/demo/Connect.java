@@ -14,11 +14,7 @@ import java.util.Map;
 @RequestMapping("/user")
 public class Connect {
 	
-	@GetMapping("/get-users")
-	public String helloIndex(){
-		return "index";
-	}
-	/*    
+	   
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -33,7 +29,7 @@ public class Connect {
 		
 		
 	}
-	*/
+	
 	
 }
 
