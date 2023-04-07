@@ -69,10 +69,10 @@ public class Connect {
 	@GetMapping("result")
 	public List<Map<String, Object>> home(@RequestParam(required = false) String user_name,@RequestParam(required = false) String user_password) {
 		
-		///String sql = "select * from user_account where user_name = ? and user_password = ?";
-		String sql = "select * from user_account";
-		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql);
-		///List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name,user_password});
+		String sql = "select * from user_account where user_name = ? and user_password = ?";
+		///String sql = "select * from user_account";
+		///List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql);
+		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name,user_password});
 		
 		return list;
 		
