@@ -67,7 +67,7 @@ public class Connect {
 	//添加SQL驗證帳號
 
 	@GetMapping("result")
-	public int home(@RequestParam(required = false) String user_name,@RequestParam(required = false) String user_password) {
+	public ModelAndView home(@RequestParam(required = false) String user_name,@RequestParam(required = false) String user_password) {
 		
 		String sql = "select * from user_account where user_name = ? and user_password = ?";
 		///String sql = "select * from user_account";
@@ -75,7 +75,7 @@ public class Connect {
 		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name,user_password});
 		
 		int size = list.size();
-		/*
+		
 		if (size > 0) {
 			
 			ModelAndView model = new ModelAndView("hello");
@@ -90,8 +90,8 @@ public class Connect {
 			return model;
 		
 		}
-		*/
-		return size;
+		
+		///return size;
 		
 	}
 }
