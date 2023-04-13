@@ -77,10 +77,15 @@ public class Connect {
 		int size = list.size();
 		
 		if (size > 0) {
-			
+			//get(0)抓第一筆資料的value
+			Object element1 = list.get(0).get("id");
+			Object element2 = list.get(0).get("user_name");
+			Object element3 = list.get(0).get("user_password");
+
 			ModelAndView model = new ModelAndView("hello");
-			model.addObject("name", user_name);
-			model.addObject("psd", user_password);
+			model.addObject("id", element1);
+			model.addObject("name", element2);
+			model.addObject("psd", element3);
 			return model;
 			
 			
