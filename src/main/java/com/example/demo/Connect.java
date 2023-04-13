@@ -64,6 +64,11 @@ public class Connect {
 		return "index";
 	}
 	
+	@GetMapping("/register")
+	public String signIn(){
+		return "register";
+	}
+
 	//添加SQL驗證帳號
 	@GetMapping("result")
 	public ModelAndView home(@RequestParam(required = false) String user_name,@RequestParam(required = false) String user_password) {
