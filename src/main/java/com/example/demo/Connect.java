@@ -70,11 +70,6 @@ public class Connect {
 			return model;
 	}
 
-	@GetMapping("/used")
-	public ModelAndView Used(){
-		ModelAndView model = new ModelAndView("used");
-			return model;
-	}
 
 	//添加SQL驗證帳號
 	@GetMapping("result")
