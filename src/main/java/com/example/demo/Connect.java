@@ -113,7 +113,7 @@ public class Connect {
 			ModelAndView model = new ModelAndView("notnull");
 			return model;
 		}else {
-			String sql= "INSERT into user_accountId (user_name,user_password) VALUES (?,?)";
+			String sql= "INSERT into user_account (user_name,user_password) VALUES (?,?)";
 			jdbcTemplate.update(sql,new Object[] {user_name,user_password});
 			ModelAndView model = new ModelAndView("index");
 			return model;
