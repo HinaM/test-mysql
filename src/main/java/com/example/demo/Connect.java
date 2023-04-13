@@ -65,7 +65,6 @@ public class Connect {
 	}
 	
 	//添加SQL驗證帳號
-
 	@GetMapping("result")
 	public ModelAndView home(@RequestParam(required = false) String user_name,@RequestParam(required = false) String user_password) {
 		
@@ -97,6 +96,22 @@ public class Connect {
 		}
 		
 		///return size;
+		
+	}
+
+	@GetMapping("update")
+	public ModelAndView updateAccount(@RequestParam String user_name,@RequestParam String user_password) {
+		
+		
+		if (user_name.isEmpty() || user_password.isEmpty()) {
+			ModelAndView model = new ModelAndView("notnull");
+			return model;
+		}else {
+			String sql= "INSERT into user_accountId (user_name,user_password) VALUES (?,?)";
+			jdbcTemplate.update(sql,new Object[] {user_name,user_password});
+			ModelAndView model = new ModelAndView("index");
+			return model;
+		}
 		
 	}
 }
