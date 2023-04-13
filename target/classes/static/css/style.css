@@ -44,3 +44,6 @@
     padding: 3px 12px;
     border-radius: 10px;
 }
+a{
+    color: inherit;
+}
