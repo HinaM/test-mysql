@@ -65,8 +65,9 @@ public class Connect {
 	}
 	
 	@GetMapping("/register")
-	public String signIn(){
-		return "register";
+	public ModelAndView signIn(){
+		ModelAndView model = new ModelAndView("register");
+			return model;
 	}
 
 	//添加SQL驗證帳號
