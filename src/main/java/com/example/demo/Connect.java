@@ -70,6 +70,12 @@ public class Connect {
 			return model;
 	}
 
+	@GetMapping("/used")
+	public ModelAndView Used(){
+		ModelAndView model = new ModelAndView("used");
+			return model;
+	}
+
 	//添加SQL驗證帳號
 	@GetMapping("result")
 	public ModelAndView home(@RequestParam(required = false) String user_name,@RequestParam(required = false) String user_password) {
@@ -108,13 +114,20 @@ public class Connect {
 	@GetMapping("update")
 	public ModelAndView updateAccount(@RequestParam String user_name,@RequestParam String user_password) {
 		
+		String sql = "select * from user_account where user_name = ?";
+		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name});
+		int size=list.size();
 		
 		if (user_name.isEmpty() || user_password.isEmpty()) {
 			ModelAndView model = new ModelAndView("notnull");
 			return model;
+		}else if(size>0) {
+			ModelAndView model = new ModelAndView("used");
+			model.addObject("name", user_name);
+			return model;
 		}else {
-			String sql= "INSERT into user_account (user_name,user_password) VALUES (?,?)";
-			jdbcTemplate.update(sql,new Object[] {user_name,user_password});
+			String sql_update= "INSERT into user_account (user_name,user_password) VALUES (?,?)";
+			jdbcTemplate.update(sql_update,new Object[] {user_name,user_password});
 			ModelAndView model = new ModelAndView("index");
 			return model;
 		}
