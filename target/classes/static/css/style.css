@@ -50,34 +50,27 @@ a{
     color: inherit;
 }
 table{
-    
     border-collapse:collapse;
-  
-  }
-  
-  th{
+}  
+th{
     background-color:#009879;
     color:#ffffff;
     width:25vw;
     height:75px;
-  }
-  
-  td{
+}  
+td{
     background-color:#ffffff;
     width:25vw;
     height:50px;
     text-align:center;
     color: #333;
-  }
-  
-  tr{
+}  
+tr{
     border-bottom: 1px solid #dddddd;
-  }
-  
-  tr:last-of-type{
-    border-bottom: 2px solid #009879;
-  }
-  
-  tr:nth-of-type(even) td{
+}  
+tr:last-of-type{
+  border-bottom: 2px solid #009879;
+}  
+tr:nth-of-type(even) td{
     background-color:#f3f3f3;
-  }
+}
