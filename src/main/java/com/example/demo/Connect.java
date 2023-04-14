@@ -75,7 +75,7 @@ public class Connect {
 	@GetMapping("result")
 	public ModelAndView home(@RequestParam(required = false) String user_name,@RequestParam(required = false) String user_password) {
 		
-		String sql = "select * from user_accountId where user_name = ? and user_password = ?";
+		String sql = "select * from user_account where user_name = ? and user_password = ?";
 		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name,user_password});
 		int size=list.size();
 		
@@ -89,7 +89,7 @@ public class Connect {
 			model.addObject("name", element2);
 			model.addObject("psd", element3);
 			
-			String sql_all = "select * from user_accountId";
+			String sql_all = "select * from user_account";
 			List<Map<String, Object>> List =  jdbcTemplate.queryForList(sql_all);
 			model.addObject("userList", List);
 			
