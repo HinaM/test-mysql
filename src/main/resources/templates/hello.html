@@ -11,7 +11,18 @@
         <h1>Welcome,<span th:text="${name}"></span>!</h1>
         <h1>Your UserId is:<span th:text="${id}"></span></h1>
         <h1>Your Password is:<span th:text="${psd}"></span></h1>
-        
+        <table border="1">
+  			<tr>
+  				<th>Id</th>
+  				<th>UserName</th>
+  				<th>UserPassword</th>
+ 			</tr>
+    		<tr th:each="userList : ${userList} " th:object="${userList}">
+        		<td th:text="*{id}"></td>
+        		<td th:text="*{user_name}"></td>
+        		<td th:text="*{user_password}"></td>
+        	</tr>
+		</table>
     </div>
 </body>
 </html>

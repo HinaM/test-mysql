@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
     background-color: #333;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
 }
 .container{
     margin-left: auto;
@@ -47,3 +49,35 @@
 a{
     color: inherit;
 }
+table{
+    
+    border-collapse:collapse;
+  
+  }
+  
+  th{
+    background-color:#009879;
+    color:#ffffff;
+    width:25vw;
+    height:75px;
+  }
+  
+  td{
+    background-color:#ffffff;
+    width:25vw;
+    height:50px;
+    text-align:center;
+    color: #333;
+  }
+  
+  tr{
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  tr:last-of-type{
+    border-bottom: 2px solid #009879;
+  }
+  
+  tr:nth-of-type(even) td{
+    background-color:#f3f3f3;
+  }
