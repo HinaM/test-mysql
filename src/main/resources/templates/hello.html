@@ -23,7 +23,7 @@
         		<td th:text="*{id}"></td>
         		<td th:text="*{user_name}"></td>
         		<td th:text="*{user_password}"></td>
-        		<td>Edit</td>
+        		<td><a th:href="@{edit(id=${userList.id})}">EDIT</a></td>
         		<td><a th:href="@{delete(id=${userList.id})}">DELETE</a></td>
         	</tr>
 		</table>
