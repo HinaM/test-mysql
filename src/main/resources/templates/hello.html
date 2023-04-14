@@ -1,5 +1,4 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,11 +16,15 @@
   				<th>Id</th>
   				<th>UserName</th>
   				<th>UserPassword</th>
+  				<th>Edit</th>
+  				<th>Delete</th>
  			</tr>
     		<tr th:each="userList : ${userList} " th:object="${userList}">
         		<td th:text="*{id}"></td>
         		<td th:text="*{user_name}"></td>
         		<td th:text="*{user_password}"></td>
+        		<td>Edit</td>
+        		<td><a th:href="@{delete(id=${userList.id})}">DELETE</a></td>
         	</tr>
 		</table>
     </div>
