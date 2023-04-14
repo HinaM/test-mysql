@@ -37,6 +37,7 @@ package com.example.demo;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -132,6 +133,40 @@ public class Connect {
 		jdbcTemplate.update(sql_del,id);
 		ModelAndView model = new ModelAndView("index");
 		return model;
+		
+	}
+
+	@GetMapping("/edit")
+	public ModelAndView edit(@RequestParam(required = false) String id) {
+		
+		String sql = "select * from user_account where id = ?";
+		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,id);
+		Object Id = list.get(0).get("id");
+		Object Name = list.get(0).get("user_name");
+		Object Psd = list.get(0).get("user_password");
+		
+		ModelAndView model = new ModelAndView("editinfo");
+		model.addObject("list", list);
+		model.addObject("id", Id);
+		model.addObject("name", Name);
+		model.addObject("psd", Psd);
+		
+		return model;
+		
+	}
+	
+	@GetMapping("/EditAndUpload/{id}")
+	public ModelAndView editAndUpload(@PathVariable long id,@RequestParam String user_name,@RequestParam String user_password) {
+		
+		if (user_name.isEmpty() || user_password.isEmpty()) {
+			ModelAndView model = new ModelAndView("notnull");
+			return model;
+		}else {
+			String sql_edit= "Update user_account set user_name=?, user_password=? where id =?";
+			jdbcTemplate.update(sql_edit,new Object[] {user_name,user_password,id});
+			ModelAndView model = new ModelAndView("redirect:/");
+			return model;
+		}
 		
 	}
 }
