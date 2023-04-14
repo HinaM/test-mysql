@@ -128,7 +128,7 @@ public class Connect {
 	@GetMapping("/delete")
 	public ModelAndView home(@RequestParam(required = false) String id) {
 		
-		String sql_del= "DELETE FROM user_accountId WHERE id=?";
+		String sql_del= "DELETE FROM user_account WHERE id=?";
 		jdbcTemplate.update(sql_del,id);
 		ModelAndView model = new ModelAndView("index");
 		return model;
