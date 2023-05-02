@@ -1,22 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style1.css}">
+    <script src="https://kit.fontawesome.com/9d0690b173.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <h1>LOGIN</h1>
-        <form name="login" method="GET" action="/result">
-            <input type="text" name="user_name">
-            <input type="password" name="user_password">
-            <button>SUBMIT</button>
-        </form>
-        <p style="margin-top: 30px;">Don't have an account? <a href="./register">Create Now!</a></p>
+        <div class="form">
+            <h1>LOGIN</h1>
+            <form name="login" method="GET" action="/result">
+                <p>UserName</p>
+                <input type="text" placeholder="Enter Your User Name Here" name="user_name">
+                <p>Password</p>
+                <div>
+                    <input type="password" placeholder="Enter Your Password Here" id="psd" name="user_password">
+                    <i class="fa-solid fa-eye" onclick="change();" id="eye"></i>
+                </div>
+                <button>SUBMIT</button>
+                <p style="text-align: right;color: #4a6267;">Don't Have An Account Now? <a href="./register">Create Here</a></p>
+            </form>
+        </div>
     </div>
 </body>
+<script>
+
+    var psd = document.getElementById("psd");
+    var eye = document.getElementById("eye");
+
+    function change(){
+        if (psd.type == "password"){
+            psd.type = "text";
+            eye.className = "fa-solid fa-eye-slash";
+        }else{
+            psd.type = "password";
+            eye.className = "fa-solid fa-eye";
+        }
+    }
+</script>
 </html>
 

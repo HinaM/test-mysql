@@ -5,18 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style3.css">
+    <script src="https://kit.fontawesome.com/9d0690b173.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <h1>EDIT User: <span th:text="${name}"></span></h1>
-        
-        <form method="GET" th:action="@{/EditAndUpload/} + ${id}">
-        	<input type="text" name="user_name"/>
-        	<input type="text" name="user_password"/>
-            <button>SUBMIT</button>
-        </form>
-       
+        <div class="form">
+            <h1>Edit :<span th:text="${name}" style="font-size: 45px;"></span></h1>
+            <form name="editForm" method="GET" th:action="@{/EditAndUpload/} + ${id}" onSubmit="return CheckForm(this);">
+                <p>UserName</p>
+                <input type="text" placeholder="Enter User Name Here" name="user_name"/>
+                <p>Password</p>
+                <div>
+                    <input type="password" placeholder="Enter Password Here" id="psd" name="user_password"/>
+                    <i class="fa-solid fa-eye" onclick="change();" id="eye"></i>
+                </div>
+                <button>SUBMIT</button>
+            </form>
+        </div>
     </div>
 </body>
+<script>
+
+var psd = document.getElementById("psd");
+var eye = document.getElementById("eye");
+
+function change(){
+    if (psd.type == "password"){
+        psd.type = "text";
+        eye.className = "fa-solid fa-eye-slash";
+    }else{
+        psd.type = "password";
+        eye.className = "fa-solid fa-eye";
+    }
+}
+
+function CheckForm(){
+	
+	
+	let name = document.forms["editForm"]["user_name"].value;
+	let psd = document.forms["editForm"]["user_password"].value;
+    
+	if (name == "" || psd == ""){
+		alert("空格不可為空。");
+		return false;
+	}
+	else{
+		var check = confirm("確認送出？");
+	    if (check == true){
+	        alert("已修改，請重新登入。");
+	        return true;
+	    }
+	}
+	
+    
+}
+</script>
 </html>

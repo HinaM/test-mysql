@@ -4,30 +4,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/9d0690b173.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style3.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome,<span th:text="${name}"></span>!</h1>
-        <h1>Your UserId is:<span th:text="${id}"></span></h1>
-        <h1>Your Password is:<span th:text="${psd}"></span></h1>
-        <table border="1">
-  			<tr>
-  				<th>Id</th>
-  				<th>UserName</th>
-  				<th>UserPassword</th>
-  				<th>Edit</th>
-  				<th>Delete</th>
- 			</tr>
-    		<tr th:each="userList : ${userList} " th:object="${userList}">
+	<header>
+        <h3>Hi, <span th:text="${name}"></span></h3>
+        <a href="./"><p><i class="fa-solid fa-right-from-bracket"></i> Log Out</p></a>
+        
+    </header>
+    <div class="table">
+        <table>
+            <tr>
+              <th style="width:15%;">Id</th>
+              <th style="width:20%;">User Name</th>
+              <th style="width:20%;">User Password</th>
+              <th style="width:20%;">Authority</th>
+              <th style="width:25%;">Action</th>
+            </tr>
+            
+            <tr th:each="userList : ${userList} " th:object="${userList}">
         		<td th:text="*{id}"></td>
         		<td th:text="*{user_name}"></td>
         		<td th:text="*{user_password}"></td>
-        		<td><a th:href="@{edit(id=${userList.id})}">EDIT</a></td>
-        		<td><a th:href="@{delete(id=${userList.id})}">DELETE</a></td>
+        		<td class="auth">
+        			<p class="user" th:if="*{authority}  == 'user'">User</p>
+					<p class="admin" th:if="*{authority} == 'admin'">Admin</p>
+                    
+                </td>
+                <td class="action">
+                    <p th:if="*{authority} == 'admin'" class="edit nouse"><i class="fa-solid fa-pen"></i> Edit</p>
+                    <p th:if="*{authority} == 'admin'" class="del nouse"><i class="fa-solid fa-trash-can"></i> Delete</p>
+                	<a th:if="*{authority}  == 'user'"  th:href="@{edit(id=${userList.id})}">
+                		<p class="edit"><i class="fa-solid fa-pen"></i> Edit</p>
+                	</a>
+                	
+                	<a th:if="*{authority}  == 'user'" th:href="@{delete(id=${userList.id})}" onclick="return check();">
+                		<p class="del"><i class="fa-solid fa-trash-can"></i> Delete</p>
+                	</a>
+                	
+                </td>
+        		
         	</tr>
-		</table>
+          </table>
+          <div class="page">
+            <i class="fa-solid fa-arrow-left"></i> <span>1</span> / 16 <i class="fa-solid fa-arrow-right"></i>
+          </div>
     </div>
+    
 </body>
+<script type="text/javascript">
+function check(){
+	var check = confirm('確定要刪除此資料嗎？');
+	if (check == true){
+		alert("已刪除，請重新登入。");
+		return true;
+	}else{
+		return false;
+	}
+}
+</script>
 </html>
-

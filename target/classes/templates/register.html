@@ -4,17 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://kit.fontawesome.com/9d0690b173.js" crossorigin="anonymous"></script>
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style1.css">
 </head>
 <body>
     <div class="container">
-        <h1>REGISTER</h1>
-        <form name="register" method="GET" action="/update">
-            <input type="text" name="user_name">
-            <input type="password" name="user_password">
-            <button>SUBMIT</button>
-        </form>
+        <div class="form">
+            <h1>REGISTER</h1>
+            <form name="register" method="GET" action="/update" onSubmit="return CheckForm();">
+                <p>UserName</p>
+                <input type="text" placeholder="Enter Your User Name Here" name="user_name">
+                <p>Password</p>
+                <input type="password" placeholder="Enter Your Password Here" name="user_password">
+                <p>Confirm Password</p>
+                <input type="password" placeholder="Re-Enter Your Password Here" name="recheck_psd">
+                <button>SUBMIT</button>
+                <p style="text-align: right;color: #4a6267;">Already Have An Account? <a href="./">Log In</a></p>
+            </form>
+        </div>
     </div>
 </body>
+<script>
+function CheckForm()
+{
+	
+	let name = document.forms["register"]["user_name"].value;
+	let psd = document.forms["register"]["user_password"].value;
+	let repsd = document.forms["register"]["recheck_psd"].value;
+    
+	if (name == "" || psd == ""){
+		alert("空格不可為空。");
+		return false;
+	}else if (psd != repsd){
+		alert("密碼與驗證密碼不相同。");
+		return false;
+	}else{
+		alert("註冊成功！可以登入了。");
+		return true;
+	}
+	
+}
+</script>
 </html>
