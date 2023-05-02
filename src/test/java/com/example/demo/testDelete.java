@@ -19,7 +19,7 @@ public class testDelete {
 	public void testforDelete(){
 		
 		int test_id = 30;
-		String sql_delete = "DELETE FROM user_accountId WHERE id=?";
+		String sql_delete = "DELETE FROM user_account WHERE id=?";
 		
 		int deleteTest = jdbcTemplate.update(sql_delete ,test_id);
 		

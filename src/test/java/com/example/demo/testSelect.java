@@ -25,7 +25,7 @@ public class testSelect {
 		String test_name=" ";
 		String test_password=" ";
 		
-		String sql = "SELECT * FROM user_accountId WHERE user_name=? and user_password=?";
+		String sql = "SELECT * FROM user_account WHERE user_name=? and user_password=?";
 		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {test_name,test_password});
 		int size=list.size();
 		

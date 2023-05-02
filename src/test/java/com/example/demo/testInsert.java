@@ -24,7 +24,7 @@ public class testInsert {
 		String user_name = "TestInsert";
 		String user_password = "psd";
 		
-		String sql_update= "INSERT into user_accountId (user_name,user_password) VALUES (?,?)";
+		String sql_update= "INSERT into user_account (user_name,user_password) VALUES (?,?)";
 		int insert = jdbcTemplate.update(sql_update,new Object[] {user_name,user_password});
 		
 		assertThat(insert).isEqualTo(1);

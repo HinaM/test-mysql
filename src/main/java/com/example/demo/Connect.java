@@ -80,7 +80,7 @@ public class Connect {
 	public Object TestForOne() {
 		
 		
-		String sql_all = "select * from user_accountId";
+		String sql_all = "select * from user_account";
 		List<Map<String, Object>> List =  jdbcTemplate.queryForList(sql_all);
 		Object element1 = List.get(0).get("user_name");
 		
@@ -96,7 +96,7 @@ public class Connect {
 	@GetMapping("result")
 	public ModelAndView home(@RequestParam(required = false) String user_name,@RequestParam(required = false) String user_password) {
 		
-		String sql = "select * from user_accountId where BINARY user_name = ? and BINARY user_password = ?";
+		String sql = "select * from user_account where BINARY user_name = ? and BINARY user_password = ?";
 		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name,user_password});
 		int size=list.size();
 		
@@ -112,7 +112,7 @@ public class Connect {
 			model.addObject("psd", element3);
 			model.addObject("authority", element4);
 			
-			String sql_all = "select * from user_accountId";
+			String sql_all = "select * from user_account";
 			List<Map<String, Object>> List =  jdbcTemplate.queryForList(sql_all);
 			model.addObject("userList", List);
 			
@@ -128,7 +128,7 @@ public class Connect {
 	@GetMapping("update")
 	public ModelAndView updateAccount(@RequestParam String user_name,@RequestParam String user_password) {
 		
-		String sql = "select * from user_accountId where BINARY user_name = ?";
+		String sql = "select * from user_account where BINARY user_name = ?";
 		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,new Object[] {user_name});
 		int size=list.size();
 		
@@ -141,7 +141,7 @@ public class Connect {
 			return model;
 		}else {
 			String default_auth = "user";
-			String sql_update= "INSERT into user_accountId (user_name,user_password,authority) VALUES (?,?,?)";
+			String sql_update= "INSERT into user_account (user_name,user_password,authority) VALUES (?,?,?)";
 			jdbcTemplate.update(sql_update,new Object[] {user_name,user_password,default_auth});
 			ModelAndView model = new ModelAndView("index");
 			return model;
@@ -152,7 +152,7 @@ public class Connect {
 	@GetMapping("/delete")
 	public ModelAndView del(@RequestParam(required = false) String id) {
 		
-		String sql_del= "DELETE FROM user_accountId WHERE id=?";
+		String sql_del= "DELETE FROM user_account WHERE id=?";
 		jdbcTemplate.update(sql_del,id);
 		ModelAndView model = new ModelAndView("index");
 		return model;
@@ -162,7 +162,7 @@ public class Connect {
 	@GetMapping("/edit")
 	public ModelAndView edit(@RequestParam(required = false) String id) {
 		
-		String sql = "select * from user_accountId where id = ?";
+		String sql = "select * from user_account where id = ?";
 		List<Map<String, Object>> list =  jdbcTemplate.queryForList(sql,id);
 		Object Id = list.get(0).get("id");
 		Object Name = list.get(0).get("user_name");
@@ -186,7 +186,7 @@ public class Connect {
 			ModelAndView model = new ModelAndView("notnull");
 			return model;
 		}else {
-			String sql_edit= "Update user_accountId set user_name=?, user_password=? where id =?";
+			String sql_edit= "Update user_account set user_name=?, user_password=? where id =?";
 			jdbcTemplate.update(sql_edit,new Object[] {user_name,user_password,id});
 			ModelAndView model = new ModelAndView("redirect:/");
 			return model;
